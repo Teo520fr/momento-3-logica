@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class App {
@@ -18,6 +17,8 @@ do {
             System.out.println("4. Salir");
             opcion = lea.nextInt();
 
+            lea.nextLine();
+
             switch (opcion) {
                 case 1:
                     System.out.println("Listado de prendas en bodega:");
@@ -29,7 +30,7 @@ do {
                     break;
                     case 2: 
                     System.out.println("Ingrese el nombre de la prenda a buscar:");
-                    String buscar = lea.next();
+                    String buscar = lea.nextLine();
 
                     boolean resultado = buscarReferencia(lote, buscar);
                     if ( resultado ==true){
@@ -38,13 +39,32 @@ do {
                         System.out.println("la prenda no se encuentra en el lote");
                     }
                     break;
-            }  case 3:
-            
-        
-            
+                    case 3:
+                        System.out.println("Ingrese el nombre de la prenda a agregar:");
+                        String nuevaPrenda = lea.nextLine();
+                        boolean agregada = false;
+                        for (int i = 0; i < lote.length; i++) {
+                            if (lote[i]== null && agregada==false){
+                                lote[i] = nuevaPrenda;
+                                agregada = true;
+                            }
+                        }
+                        if (agregada==true){
+                            System.out.println("la prenda se agrego correctamente");
+                        } else {
+                            System.out.println("no hay espacio  para agregar la prenda");
+                        }
+                        break;
 
+                case 4:
+                    System.out.println("muchas gracias por visitarnos");
+                    break;
+
+                default:
+                    System.out.println("ingrese una opciion valida  ");
             
-} while (true);
+                    }  
+} while (opcion != 4);
     
 
     }
@@ -63,3 +83,5 @@ do {
         return encontrada;
     }
 }
+ 
+
